@@ -17,12 +17,24 @@ BsonClassMap.RegisterClassMap<Email>(cm =>
     cm.SetIgnoreExtraElements(true);
 });
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy  =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 // Add services, this connects interfaces with services and creates a new instance per request
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
-
-builder.Services.AddControllers(); // Allows [ApiController] classes to receive HTTP requests
+// Allows [ApiController] classes to receive HTTP requests
+builder.Services.AddControllers(); 
 builder.Services.AddEndpointsApiExplorer();
 
 // Add services to the container.
@@ -36,5 +48,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseCors(MyAllowSpecificOrigins);
 app.MapControllers();
 app.Run();

@@ -1,0 +1,14 @@
+<button (click)="fetchProjects()">Get Projects</button>
+
+<div *ngIf="loadingProjects">Loading...</div>
+
+<ul *ngIf="projects.length">
+  <li *ngFor="let project of projects">
+    <button (click)="fetchEmails(project.id)">{{ project.name }}</button>
+    <ul *ngIf="projectEmails[project.id]?.length">
+        <li *ngFor="let email of projectEmails[project.id]">
+            {{ email.subject }}
+        </li>
+    </ul>
+  </li>
+</ul>

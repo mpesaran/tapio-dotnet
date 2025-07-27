@@ -20,7 +20,8 @@ namespace Backend.Services
 
         public async Task<Email?> GetByIdAsync(string id) =>
             await _emailCollection.Find(u => u.Id == id).FirstOrDefaultAsync();
-
+        public async Task<List<Email>> GetByProjectIdAsync(string id) =>
+            await _emailCollection.Find(e => e.ProjectId == id && e.IsApproved == true).ToListAsync();
         public async Task CreateAsync(Email email) =>
             await _emailCollection.InsertOneAsync(email);
 
