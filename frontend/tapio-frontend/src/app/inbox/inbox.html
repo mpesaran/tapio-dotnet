@@ -1,1 +1,39 @@
-<p>inbox works!</p>
+<h2>Tapped UP</h2>
+<div *ngIf="tappedEmails.length, else noTapped">
+    <app-email-item
+        *ngFor="let email of tappedEmails"
+        [email]="email"
+        (tapToggle)="toggleTapped(email)"
+        (read)="markAsRead(email)"
+    >
+    </app-email-item>
+</div>
+<ng-template #noTapped><p>No tapped emails.</p></ng-template>
+
+<h2>UNREAD</h2>
+<div *ngIf="unreadEmails.length, else noUnread">
+    <app-email-item
+        *ngFor="let email of unreadEmails"
+        [email]="email"
+        (tapToggle)="toggleTapped(email)"
+        (read)="markAsRead(email)"
+    >
+    </app-email-item>
+</div>
+<ng-template #noUnread><p>No unread emails.</p></ng-template>
+
+<h2>READ</h2>
+<div *ngIf="readEmails.length, else noRead">
+    <app-email-item
+        *ngFor="let email of readEmails"
+        [email]="email"
+        (tapToggle)="toggleTapped(email)"
+        (read)="markAsRead(email)"
+    >
+    </app-email-item>
+</div>
+<ng-template #noRead><p>No read emails.</p></ng-template>
+
+
+
+
