@@ -1,0 +1,118 @@
+.email-item-tapin-flex-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: var(--color-font-primary);
+  padding: 0 4px 0 4px;
+  /* animation: loadin 1s 1; */
+}
+
+.email-item-tapin-flex-wrapper.no-tap-mode .email-sender {
+  font-size: 0.9rem;
+}
+
+.email-item-tapin-flex-wrapper.no-tap-mode .email-subject {
+  font-size: 0.6rem;
+}
+
+.email-item-tapin-flex-wrapper.no-tap-mode .email-date {
+  font-size: 0.7rem;
+}
+
+.tap-in-wrapper {
+  width: 10px;
+  height: auto;
+}
+.tap-in-dot {
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-green-dark-mode);
+  border-radius: 50%;
+}
+.tap-in-dot.inactive {
+  background-color: #313131;
+}
+.tap-in-dot:hover {
+  cursor: pointer;
+}
+.tap-in-dot.inactive:hover {
+  background-color: var(--color-green-dark-mode);
+  cursor: pointer;
+}
+/* Email item */
+.email-content-date-flex {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: var(--border-green-dark-mode);
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+.email-content-date-flex.inactive {
+  border: var(--border-grey-dark-mode);
+}
+.email-sender-subject-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.email-sender {
+  font-family: var(--font-stylised);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-font-primary);
+  line-height: 1;
+}
+.email-subject {
+  font-family: var(--font-bodycopy);
+  font-size: var(--font-size-regular);
+  font-weight: var(--font-weight-light);
+  color: var(--color-font-offwhite);
+}
+.email-date {
+  font-family: var(--font-bodycopy);
+  font-size: var(--font-size-regular);
+  font-weight: var(--font-weight-light);
+  color: var(--color-font-primary);
+}
+.email-content-date-flex:hover {
+  background-color: var(--color-dark-mode-hover);
+  cursor: pointer;
+}
+
+/* Mobile styling */
+@media (max-width: 500px) {
+  .email-content-date-flex {
+    min-height: 70px;
+  }
+  .email-sender-subject-flex {
+    gap: 2px;
+  }
+  .email-sender {
+    font-size: var(--font-size-regular);
+    line-height: 1;
+  }
+  .email-subject {
+    margin-top: 4px;
+    font-size: var(--font-size-small-bodycopy);
+  }
+  .email-date {
+    font-size: var(--font-size-small-bodycopy);
+  }
+}
+
+@keyframes loadin {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

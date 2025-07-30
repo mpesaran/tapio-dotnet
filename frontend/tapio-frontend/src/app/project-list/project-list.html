@@ -4,11 +4,14 @@
 
 <ul *ngIf="projects.length">
   <li *ngFor="let project of projects">
-    <button (click)="fetchEmails(project.id)">{{ project.name }}</button>
-    <ul *ngIf="projectEmails[project.id]?.length">
+    <button (click)="fetchEmails(project.id)">{{ project.name }},  {{ emailVisibility[project.id] ? 'Hide Emails' : 'Show Emails' }}</button>
+    <ul *ngIf="emailVisibility[project.id]">
         <li *ngFor="let email of projectEmails[project.id]">
             {{ email.subject }}
         </li>
     </ul>
+    <div *ngIf="!projectEmails[project.id]?.length && !loadingEmails">
+      No emails found.
+    </div>
   </li>
 </ul>

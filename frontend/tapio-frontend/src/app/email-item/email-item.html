@@ -1,0 +1,24 @@
+<div
+  class="email-item-tapin-flex-wrapper"
+  [class.no-tap-mode]="!showTapIn"
+>
+  <div *ngIf="showTapIn" class="tap-in-wrapper">
+    <div
+      (click)="onTapClick($event)"
+      class="tap-in-dot"
+      [class.inactive]="!email.isTapped"
+    ></div>
+  </div>
+
+  <div
+    (click)="onEmailClick()"
+    class="email-content-date-flex"
+    [class.inactive]="email.isRead"
+  >
+    <div class="email-sender-subject-flex">
+      <p class="email-sender">{{ email.from }}</p>
+      <p class="email-subject">{{ email.subject }}</p>
+    </div>
+    <p class="email-date">{{ formattedDate }}</p>
+  </div>
+</div>
